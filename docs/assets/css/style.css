@@ -829,6 +829,45 @@ section {
 
 
 /* =========================================================
+   HEADLINE RESULTS
+   ========================================================= */
+
+.result-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 auto 30px;
+}
+
+
+.result-card {
+  padding: 18px 20px 16px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(40, 100, 189, 0.14);
+  border-radius: 4px;
+  text-align: center;
+}
+
+
+.result-card strong {
+  display: block;
+  color: var(--accent-dark);
+  font-size: 1.72rem;
+  line-height: 1.1;
+  font-weight: 750;
+}
+
+
+.result-card span {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+
+/* =========================================================
    RESULTS
    ========================================================= */
 
@@ -1099,6 +1138,15 @@ section {
 
   font-size: 0.83rem;
   font-weight: 500;
+}
+
+
+.visualization-note {
+  max-width: 520px;
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
 }
 
 
@@ -1390,6 +1438,12 @@ section {
 
   .demo-grid {
     grid-template-columns: 1fr;
+  }
+
+
+  .result-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
 
