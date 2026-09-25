@@ -119,7 +119,13 @@
         </h1>
         <div class="resource-buttons" aria-label="Project resources">
           <a class="resource-button" href="./assets/paper/main.pdf" target="_blank" rel="noopener">Paper</a>
-          <a class="resource-button" href="./assets/gifs/AMC-Drive-Video_v1.0.mp4" target="_blank" rel="noopener">Video</a>
+          <details class="video-menu">
+            <summary class="resource-button video-menu-toggle">Video</summary>
+            <div class="video-menu-options" aria-label="Video language options">
+              <a href="./assets/gifs/AMC_Drive_Chinese_lyz.mp4" target="_blank" rel="noopener">Video · 中文</a>
+              <a href="./assets/gifs/AMC_Drive_English_lyz.mp4" target="_blank" rel="noopener">Video · English</a>
+            </div>
+          </details>
           <a class="resource-button" href="https://huggingface.co/spaces/AGC2024-P/e2e-driving-navtest" target="_blank" rel="noopener">Model (HF)</a>
           <a class="resource-button" href="https://anonymous.4open.science/r/AMC-Drive-1C39/" target="_blank" rel="noopener">Code</a>
         </div>
