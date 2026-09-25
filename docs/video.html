@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AMC-Drive project videos">
+  <title>AMC-Drive Videos</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #17243a;
+      background: #f5f6f8;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .video-page {
+      width: min(1100px, 100%);
+      padding: clamp(22px, 4vw, 44px);
+      border: 1px solid rgba(40, 55, 80, 0.12);
+      border-radius: 22px;
+      background: #ffffff;
+      box-shadow: 0 18px 50px rgba(40, 55, 80, 0.12);
+      box-sizing: border-box;
+    }
+    .back-link {
+      color: #2864bd;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 22px 0 8px;
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+    }
+    .subtitle {
+      margin: 0 0 22px;
+      color: #66758b;
+    }
+    video {
+      display: block;
+      width: 100%;
+      max-height: 72vh;
+      border-radius: 14px;
+      background: #0d1524;
+    }
+    .language-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .language-links a {
+      padding: 9px 14px;
+      border: 1px solid rgba(40, 100, 189, 0.28);
+      border-radius: 999px;
+      color: #2864bd;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .language-links a:hover,
+    .language-links a:focus-visible {
+      background: rgba(40, 100, 189, 0.08);
+    }
+    .fallback {
+      margin: 18px 0 0;
+      color: #66758b;
+      font-size: 0.9rem;
+    }
+    .fallback a { color: #2864bd; }
+  </style>
+</head>
+<body>
+  <main class="video-page">
+    <a class="back-link" href="./index.html">← Back to AMC-Drive</a>
+    <h1 id="video-title">AMC-Drive Video</h1>
+    <p class="subtitle" id="video-subtitle">Select a language to play the project video.</p>
+    <video id="project-video" controls playsinline preload="metadata">
+      <p>Your browser does not support HTML5 video.</p>
+    </video>
+    <nav class="language-links" aria-label="Video language options">
+      <a href="./video.html?lang=zh">中文视频</a>
+      <a href="./video.html?lang=en">English video</a>
+    </nav>
+    <p class="fallback">If playback does not start, <a id="fallback-link" href="">open the video directly</a>.</p>
+  </main>
+  <script>
+    const videos = {
+      zh: {
+        title: 'AMC-Drive 中文视频',
+        subtitle: '中文讲解与项目演示',
+        src: 'https://media.githubusercontent.com/media/qyshu5356-ui/amc-drive-project-page/main/docs/assets/gifs/AMC_Drive_Chinese_lyz.mp4'
+      },
+      en: {
+        title: 'AMC-Drive English Video',
+        subtitle: 'English project presentation and demonstration',
+        src: 'https://media.githubusercontent.com/media/qyshu5356-ui/amc-drive-project-page/main/docs/assets/gifs/AMC_Drive_English_lyz.mp4'
+      }
+    };
+    const key = new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en';
+    const video = videos[key];
+    document.documentElement.lang = key === 'zh' ? 'zh-CN' : 'en';
+    document.title = video.title;
+    document.getElementById('video-title').textContent = video.title;
+    document.getElementById('video-subtitle').textContent = video.subtitle;
+    const player = document.getElementById('project-video');
+    player.innerHTML = `<source src="${video.src}" type="video/mp4">Your browser does not support HTML5 video.`;
+    document.getElementById('fallback-link').href = video.src;
+  </script>
+</body>
+</html>
