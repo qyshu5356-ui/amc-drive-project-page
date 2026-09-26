@@ -123,13 +123,13 @@
     <section class="text-summary" aria-labelledby="summary-title">
       <h2 id="summary-title">Text summary</h2>
       <p id="video-summary"></p>
-      <p>The project introduces effective multimodality for fixed-budget driving proposals. A frozen action-conditioned predictive representation measures candidate relations; topology-aware calibration reduces repeated predictive futures while a cross-mode guard preserves distinct decision modes. The candidate count and inference interface remain unchanged.</p>
+      <p id="video-summary-note"></p>
     </section>
     <div class="video-load-row">
       <button class="load-video-button" id="load-video" type="button">Load video</button>
-      <p class="video-note">Video files are large and are loaded only after you request playback.</p>
+      <p class="video-note">The cover image is shown first; the video file loads only after you request playback.</p>
     </div>
-    <video id="project-video" controls playsinline preload="none" hidden>
+    <video id="project-video" controls playsinline preload="none" poster="./assets/gifs/project_video_poster.jpg">
       <p>Your browser does not support HTML5 video.</p>
     </video>
     <nav class="language-links" aria-label="Video language options">
@@ -143,12 +143,16 @@
       zh: {
         title: 'AMC-Drive 中文视频',
         subtitle: '中文讲解与项目演示',
-        src: './assets/gifs/project_video_zh.mp4'
+        src: './assets/gifs/project_video_zh_web.mp4',
+        summary: '本视频介绍 AMC-Drive 如何利用冻结的动作条件预测表征、拓扑感知校准和跨模态防护机制，组织固定预算下的多模态驾驶候选。',
+        note: '视频是可选补充材料；页面正文和论文已提供方法与结果概览。'
       },
       en: {
         title: 'AMC-Drive English Video',
         subtitle: 'English project presentation and demonstration',
-        src: './assets/gifs/project_video_en.mp4'
+        src: './assets/gifs/project_video_en_web.mp4',
+        summary: 'This presentation explains how AMC-Drive organizes a fixed budget of multimodal driving proposals using frozen action-conditioned predictive representations, topology-aware calibration, and a cross-mode guard.',
+        note: 'The video is optional supplementary material; the project page and paper provide the method and results overview.'
       }
     };
     const key = new URLSearchParams(window.location.search).get('lang') === 'zh' ? 'zh' : 'en';
@@ -157,18 +161,17 @@
     document.title = video.title;
     document.getElementById('video-title').textContent = video.title;
     document.getElementById('video-subtitle').textContent = video.subtitle;
-    document.getElementById('video-summary').textContent = key === 'zh'
-      ? '文字说明：AMC-Drive 面向固定候选预算下的多模态驾驶规划，利用冻结的动作条件预测表征识别候选未来之间的关系，通过拓扑感知校准减少重复未来，同时保留不同决策模态。'
-      : 'This presentation explains how AMC-Drive organizes a fixed budget of multimodal driving proposals using frozen action-conditioned predictive representations, topology-aware calibration, and a cross-mode guard.';
+    document.getElementById('video-summary').textContent = video.summary;
+    document.getElementById('video-summary-note').textContent = video.note;
     const player = document.getElementById('project-video');
     const loadButton = document.getElementById('load-video');
     loadButton.addEventListener('click', () => {
       if (!player.querySelector('source')) {
-        player.innerHTML = `<source src="${video.src}" type="video/mp4">Your browser does not support HTML5 video.`;
+        player.insertAdjacentHTML('beforeend', `<source src="${video.src}" type="video/mp4">`);
       }
-      player.hidden = false;
       loadButton.hidden = true;
       player.load();
+      player.play().catch(() => {});
     });
     document.getElementById('fallback-link').href = video.src;
   </script>
