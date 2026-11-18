@@ -871,6 +871,77 @@ section {
    RESULTS
    ========================================================= */
 
+.aerial-results,
+.aerial-scenes,
+.aerial-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.aerial-results h3,
+.aerial-scene h3 {
+  margin: 0 0 10px;
+  font-size: 0.96rem;
+  font-weight: 650;
+}
+
+.aerial-comparison {
+  margin: 0;
+}
+
+.aerial-scenes,
+.aerial-pair {
+  display: grid;
+  gap: 14px;
+}
+
+.aerial-scene {
+  padding: 16px 12px 12px;
+  border: 1px solid var(--table-line);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.aerial-pair p {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.aerial-pair > div:last-child p {
+  color: var(--accent-dark);
+}
+
+/* Use the manuscript's crop windows on the 886 × 380 source montage. */
+.aerial-plot {
+  --h: 166;
+  --y: 45;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: var(--w) / var(--h);
+}
+
+.aerial-plot-amc {
+  --h: 153;
+  --y: 222;
+}
+
+.aerial-plot img {
+  position: absolute;
+  top: calc(-100% * var(--y) / var(--h));
+  left: calc(-100% * var(--x) / var(--w));
+  width: calc(100% * 886 / var(--w));
+  max-width: none;
+  height: auto;
+}
+
+.aerial-comparison figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
 .result-section {
   padding-bottom: 38px;
 }
@@ -1436,7 +1507,8 @@ section {
   }
 
 
-  .demo-grid {
+  .demo-grid,
+  .aerial-scenes {
     grid-template-columns: 1fr;
   }
 

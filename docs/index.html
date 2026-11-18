@@ -102,6 +102,7 @@
         <a href="#overview">Overview</a>
         <a href="#method">Method</a>
         <a href="#results">Results</a>
+        <a href="#aerial">Aerial</a>
         <a href="#demos">Visualization</a>
       </nav>
     </div>
@@ -285,6 +286,105 @@
           driving, showing how the candidate-level consolidation interface can
           be used in a robotic decision problem.
         </figcaption>
+      </figure>
+    </section>
+
+    <section class="content-panel" id="aerial" aria-labelledby="aerial-title">
+      <div class="section-heading">
+        <h2 id="aerial-title">3D Aerial Obstacle Avoidance</h2>
+        <p>We compare Diffusion Policy (DP) and DP with AMC post-training in a
+          simulated obstacle-avoidance task with physical trajectory tracking.
+          Both use eight candidates and the same inference selector and controller.
+          Results are averaged over three training seeds, with 256 scenes per seed.</p>
+      </div>
+
+      <div class="result-cards aerial-results">
+        <div class="result-card">
+          <h3>Physically valid candidates</h3>
+          <strong>95.13%</strong>
+          <span>DP: 91.62% · Gain with AMC: +3.51 percentage points</span>
+        </div>
+        <div class="result-card">
+          <h3>First-candidate execution success</h3>
+          <strong>95.44%</strong>
+          <span>DP: 91.67% · Gain with AMC: +3.77 percentage points</span>
+        </div>
+      </div>
+
+      <figure class="aerial-comparison">
+        <div class="aerial-scenes">
+          <div class="aerial-scene">
+            <h3>Scene 1010004</h3>
+            <div class="aerial-pair">
+              <div>
+                <p>DP</p>
+                <div class="aerial-plot" style="--x: 24; --w: 209">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP trajectories in scene 1010004" loading="lazy">
+                </div>
+              </div>
+              <div>
+                <p>DP + AMC</p>
+                <div class="aerial-plot aerial-plot-amc" style="--x: 40; --w: 186">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP with AMC trajectories in scene 1010004" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aerial-scene">
+            <h3>Scene 1010005</h3>
+            <div class="aerial-pair">
+              <div>
+                <p>DP</p>
+                <div class="aerial-plot" style="--x: 244; --w: 210">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP trajectories in scene 1010005" loading="lazy">
+                </div>
+              </div>
+              <div>
+                <p>DP + AMC</p>
+                <div class="aerial-plot aerial-plot-amc" style="--x: 257; --w: 192">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP with AMC trajectories in scene 1010005" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aerial-scene">
+            <h3>Scene 1010006</h3>
+            <div class="aerial-pair">
+              <div>
+                <p>DP</p>
+                <div class="aerial-plot" style="--x: 464; --w: 212">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP trajectories in scene 1010006" loading="lazy">
+                </div>
+              </div>
+              <div>
+                <p>DP + AMC</p>
+                <div class="aerial-plot aerial-plot-amc" style="--x: 478; --w: 191">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP with AMC trajectories in scene 1010006" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aerial-scene">
+            <h3>Scene 1010007</h3>
+            <div class="aerial-pair">
+              <div>
+                <p>DP</p>
+                <div class="aerial-plot" style="--x: 682; --w: 197">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP trajectories in scene 1010007" loading="lazy">
+                </div>
+              </div>
+              <div>
+                <p>DP + AMC</p>
+                <div class="aerial-plot aerial-plot-amc" style="--x: 699; --w: 187">
+                  <img src="./assets/figures/aerial_trajectories.png" alt="DP with AMC trajectories in scene 1010007" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>Four paired scenes show candidate trajectories around an obstacle.
+          The square marks the start, the star marks the goal, and the translucent
+          surface marks the obstacle. Axes are in meters.</figcaption>
       </figure>
     </section>
 
